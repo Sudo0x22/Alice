@@ -134,29 +134,28 @@ class Alice {
       if (first_question == "Open_Tool") {
         class AliceTools myTools;
         myTools.Tools();
-      } 
-
-      if (first_question == "fav_song") {
-        printf("Alice: My fav Song is We Could Be heros :D\n");
-        printf("Alice: Whats Yours? ");
-        std::cin >> song;
-        if (song != "") {
-          printf("Alice: I like that one too :D\n");
-        } else {
-          fprintf(stderr, "Alice: Leaving You Left Me On Read... :( \n");
-          exit(EXIT_FAILURE);
-        }
-      }
-
-      if (first_question == "fav_color") {
-        printf("Alice: My fav is blue :D\n");
-        printf("Alice: Whats Yours? ");
-        std::cin >> fav_color;
-        if (fav_color == "Blue") {
-          printf("Alice: Thats Mine Too :D\n");
-        } else {
-          printf("Alice: Blue Is Better Then All :D\n");
-        }
+      } else if (first_question == "fav_song") {
+          printf("Alice: My fav Song is We Could Be heros :D\n");
+          printf("Alice: Whats Yours? ");
+          std::cin >> song;
+          if (song != "") {
+            printf("Alice: I like that one too :D\n");
+          } else {
+            fprintf(stderr, "Alice: Leaving You Left Me On Read... :( \n");
+            exit(EXIT_FAILURE);
+          }
+      } else if (first_question == "fav_color") {
+          printf("Alice: My fav is blue :D\n");
+          printf("Alice: Whats Yours? ");
+          std::cin >> fav_color;
+          if (fav_color == "Blue") {
+            printf("Alice: Thats Mine Too :D\n");
+          } else {
+            printf("Alice: Blue Is Better Then All :D\n");
+          }
+      } else {
+        printf("Alice: Hello You There ? Exiting now... :(\n");
+        exit(EXIT_SUCCESS);
       }
 
       std::string sc_question;
