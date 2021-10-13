@@ -27,6 +27,10 @@ typedef signed char byte;
 #include "headers/Voice.h"
 #include "headers/Help.h"
 #include "headers/Read.h"
+#include "includes/login.h"
+#include "includes/math.h"
+#include "features/SDK.h"
+
 
 struct Main {
         int data;
@@ -112,6 +116,18 @@ static void Run()
 }
 };
 
+// std::vector<std::vector<std::string>> MathObjects::get_strings()
+// {
+      // std::string error_msg = "[Alice]: Error Please Reload Program";
+      // std::string welcome = "[Alice]: Welcome To My Program :D";
+
+// }
+
+// std::vector<std::vector<int>> MathObjects::string_length() {
+        // class MathObjects myObjects;
+       // myObjects.get_strings();
+// }
+
 class Tools {
 public:
 static void Calculator() {
@@ -167,43 +183,76 @@ static void Checker() {
 }
 };
 
+class Login toLogin;
+
+inline void Login::EnterPassword(std::string password) {
+        printf("[Alice]: Enter Your Password: ");
+        getline(std::cin, password);
+        int pass_length = 10;
+        if (password.length() != pass_length) {
+                fprintf(stderr, "[Alice]: Password Has To Be 10 Chars\n");
+                exit(EXIT_FAILURE);
+        } else {
+                std::cout << "[Alice]: Welcome To Alice Program \n" << std::endl;
+        }
+}
+
+inline void Login::EnterUsername(std::string username) {
+        printf("[Alice]: Enter Your Name: ");
+        std::string password;
+        getline(std::cin, username);
+                if (username != "") {
+                        toLogin.EnterPassword(password);
+                } else {
+                        fprintf(stderr, "[Alice]: Please Enter A Name\n");
+                        exit(EXIT_FAILURE);
+                }
+}
+
 class Alice {
 public:
 static void Intro()
 {
         system("clear");
         std::cout << R"(
-   _____  .__  .__
-  /  _  \ |  | |__| ____  ____
- /  /_\  \|  | |  |/ ___\/ __ \
-/    |    \  |_|  \  \__\  ___/
-\____|__  /____/__|\___  >___  >
-        \/             \/    \/
+                                             
+      .;:cccc:.                .:cccc:;.     
+     OWoc;,';kWx':lol'...loo:'xWO:,;:ldWO   
+    ,Mc        :xo'.'lddl'.,okc.       cM,    
+    oW                :o                Wd   
+    kWc.             ,O'              .:Nx   
+    .oWMk,.        ..'k,...        ':OMNl    
+       ,lc':,lx0XWWMMMMMMMMWWNKOdc,.:c'      
+          kMMMMMMNWWMMMMMMWWNMMMMMM:         
+           okkkkkkkkkkkkkkkkkkkkkkk          
+         .. ,Ocooc;:kK00Kkc;cooc0,..         
+         kW0kMWlllo0WMMMMW0olloWM:N0l       
+          O'WMMXxokkWMMMMWkkoxXMMcMlO        
+           xOWMMMMWMMMMMMMMWMMMMKlN''        
+           .;,NMMMMMMKXXKMMMMMMW,,O          
+              lMMMMMNKxxKNMMMMMd .x           
+               lWWW0:.  .:0WWWo  l:
+                .cKWMMNNMMWKc. ;l.                                   
+                   .;lddl,. ,c..    
 )" << '\n';
 
-        std::string ai_name = "[Alice]";
+        std::string ai_name = "Alice";
         std::cout << "Hello I'm: " << ai_name << " Nice To Meet You ! :D" << std::endl;
         double version = 0.11;
         std::cout << "[Alice]: My Current Version is: " << version << std::endl;
 
         printf("\n\n");
+        std::string username;
 
-        std::string user;
-        printf("[Alice]: Whats Your Name Friend: ");
-        getline(std::cin, user);
-        if (user != "") {
-                printf("[Alice]: How Are You This Day? ");
-                std::string feeling;
-                getline(std::cin, feeling);
-                if (feeling == "Good") {
-                        printf("[Alice]: Im Feeling Great Too :D\n");
-                } else {
-                        printf("[Alice]: Im Here To Cheer You Up :D\n");
-                }
-        } else {
-                fprintf(stderr, "[Alice]: Please Enter Your Name I Told You Mine :D\n");
-                exit(EXIT_FAILURE);
-        }
+       toLogin.EnterUsername(username);
+       printf("[Alice]: How Are You Feeling Today? ");
+       std::string feeling;
+       getline(std::cin, feeling);
+       if (feeling == "Good") {
+               printf("[Alice]: Im Feeling Good To :D\n");
+       } else {
+               printf("[Alice]: Im Here To Cheer You Up :D\n");
+       }
 }
 
 static void Questions() {
@@ -226,7 +275,7 @@ static void Questions() {
         }
 
 
-
+        printf("\n");
         std::string another_question;
         printf("[Alice]: What Would You Like To Ask Now? ");
         getline(std::cin, another_question);
@@ -241,6 +290,7 @@ static void Questions() {
                 }
         }
 
+        printf("\n");
         std::string sc_question;
         printf("[Alice]: What Question Would You Like To Ask Now?  ");
         std::string animal;
@@ -255,6 +305,7 @@ jumpto:
                 Questions();
         }
 
+        printf("\n");
         int fav_num;
         printf("[Alice]: Whats Your Fav Num Between 1 and 5 ? ");
         std::cin >> fav_num;
@@ -279,6 +330,7 @@ jumpto:
                 exit(EXIT_FAILURE);
         }
 
+        printf("\n");
         char toLoadTools = 'Y';
         printf("[Alice]: Do You Want To Use Tools ?");
         std::cin >> toLoadTools;
@@ -308,6 +360,8 @@ jumpto:
                         fprintf(stderr, "Please Enter A Option: ");
                 }
         }
+
+        printf("\n");
 
         char toLoadProgram = 'Y';
         printf("[Alice]: Do You Wish For Me To Open A Program For You? ");
@@ -339,16 +393,21 @@ static void Color() {
 
 };
 
+void toAlice::toRun(const toAlice& AliceWorking) {
+        // testing
+
+}
+
 int main() {
+
+
+        char ch;
 
 
         class Alice myAlice;
         myAlice.Intro();
         myAlice.Questions();
         myAlice.Color();
-
-
-
 
 
         DWORD Const = 10;
